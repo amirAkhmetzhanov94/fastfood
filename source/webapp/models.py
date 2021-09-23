@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.fields import BooleanField, DecimalField
 
-CATEGORY_CHOICES = ['Напиток', 'Еда']
+CATEGORY_CHOICES = [('drink', 'Напиток'), ('food', 'Еда')]
 
 
 class Dish(models.Model):

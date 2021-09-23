@@ -1,0 +1,15 @@
+body {
+    font-family: arial, sans-serif;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+nav{
+    margin-bottom: 50px;
+}
+
+h1.main_page{
+    text-align: center
+}
