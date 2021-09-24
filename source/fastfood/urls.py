@@ -19,5 +19,5 @@ from webapp import views as webapp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', webapp_views.index)
+    path('', webapp_views.Index.as_view())
 ]
