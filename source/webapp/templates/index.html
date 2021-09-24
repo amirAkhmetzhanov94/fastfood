@@ -3,7 +3,25 @@
 {% block title %}Main page{% endblock %}
 
 {% block content %}
-    <h1 class="main_page">Dishes</h1>
-    <div class="row mt-5">
+<div class="flex-container">
+  <div class="order_details">
+    <h5 class="orders_title">Order details</h5>
+    <p>Order is empty, please add some dishes</p>
+  </div>
+  <div class="dishes">
+    <h5 class="dishes_title">Dishes</h5>
+    <div class="order_block">
+      <p>Order</p>
     </div>
+    <div class="order_block">
+      <p>Order</p>
+    </div>
+    <div class="order_block">
+      <p>Order</p>
+    </div>
+    <div class="order_block">
+      <p>Order</p>
+    </div>
+  </div>
+</div>
 {% endblock %}
