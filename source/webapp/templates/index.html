@@ -5,23 +5,25 @@
 {% block content %}
 <div class="flex-container">
   <div class="order_details">
-    <h5 class="orders_title">Order details</h5>
+    <h2 class="orders_title">Order details</h2>
     <p>Order is empty, please add some dishes</p>
   </div>
   <div class="dishes">
-    <h5 class="dishes_title">Dishes</h5>
+    <h2 class="dishes_title">Dishes</h2>
+      {% for order in orders %}
     <div class="order_block">
-      <p>Order</p>
+              {% if order.dish_in_order.category == 'food' %}
+              <div class="order_food">
+                  <i class="fas fa-utensils fa-3x" style="float: left"></i>
+              {% elif order.dish_in_order.category == 'drink' %}
+              <div class="order_drink">
+                <i class="fas fa-coffee fa-3x" style="float: left"></i>
+              {% endif %}
+                <p>{{ order.dish_in_order.title }}</p><hr>
+              </div>
+          <p class="text-center">Price: {{ order.dish_in_order.price }}</p>
     </div>
-    <div class="order_block">
-      <p>Order</p>
-    </div>
-    <div class="order_block">
-      <p>Order</p>
-    </div>
-    <div class="order_block">
-      <p>Order</p>
-    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

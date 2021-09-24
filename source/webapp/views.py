@@ -7,5 +7,5 @@ class Index(TemplateView):
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
-        extra_context = {'Orders': Order.objects.all()}
+        extra_context = {'orders': Order.objects.all()}
         return extra_context
