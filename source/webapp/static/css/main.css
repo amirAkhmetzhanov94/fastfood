@@ -34,13 +34,18 @@ h2.orders_title, h2.dishes_title{
     padding-top: 30px;
 }
 
-div.order_block{
+
+div.order_block, div.dishes_block{
     display: inline-block;
     width: 40%;
     border-style: solid;
     border-color: black;
     margin: 20px;
 }
+div.order_list{
+    margin: 50px;
+}
+
 hr{
     size: 2px;
 }
@@ -48,9 +53,9 @@ i{
     padding: 10px;
 }
 
-div.order_food{
+div.dishes_food{
     background: darkorange;
 }
-div.order_drink{
+div.dishes_drink{
     background: darkseagreen;
 }
