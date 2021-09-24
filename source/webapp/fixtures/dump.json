@@ -1,0 +1,134 @@
+[
+{
+  "model": "webapp.dish",
+  "pk": 1,
+  "fields": {
+    "title": "Hamburger",
+    "category": "food",
+    "price": "5.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.dish",
+  "pk": 2,
+  "fields": {
+    "title": "Cheeseburger",
+    "category": "food",
+    "price": "3.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.dish",
+  "pk": 3,
+  "fields": {
+    "title": "PIzza",
+    "category": "food",
+    "price": "4.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.dish",
+  "pk": 4,
+  "fields": {
+    "title": "Cola",
+    "category": "drink",
+    "price": "1.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.dish",
+  "pk": 5,
+  "fields": {
+    "title": "Pepsi",
+    "category": "drink",
+    "price": "1.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.dish",
+  "pk": 6,
+  "fields": {
+    "title": "Sprite",
+    "category": "drink",
+    "price": "1.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 1,
+  "fields": {
+    "dish_in_order": 1,
+    "completed_order": false,
+    "created_at": "2021-09-24T06:32:19.076Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 2,
+  "fields": {
+    "dish_in_order": 2,
+    "completed_order": false,
+    "created_at": "2021-09-24T06:50:18.723Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 3,
+  "fields": {
+    "dish_in_order": 3,
+    "completed_order": false,
+    "created_at": "2021-09-24T06:50:24.221Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 4,
+  "fields": {
+    "dish_in_order": 4,
+    "completed_order": false,
+    "created_at": "2021-09-24T06:50:30.999Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 5,
+  "fields": {
+    "dish_in_order": 5,
+    "completed_order": false,
+    "created_at": "2021-09-24T06:50:37.893Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 6,
+  "fields": {
+    "dish_in_order": 6,
+    "completed_order": false,
+    "created_at": "2021-09-24T06:51:21.431Z"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$qyTyP6xDCQ7ODlEVyXKPqo$Oo95Gq89X092MHGTrjkeQ73jaxFMpX0t/Uwf2+LTugE=",
+    "last_login": "2021-09-24T06:18:21.167Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-09-24T06:16:50.268Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
