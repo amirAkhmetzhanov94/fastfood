@@ -13,3 +13,11 @@ class Index(TemplateView):
             extra_context['orders'] = Order.objects.all()
             extra_context['number_of_dishes'] = Order.objects.count()
         return extra_context
+
+
+class OrdersView(TemplateView):
+    template_name = 'orders_list.html'
+
+    def get_context_data(self, **kwargs):
+        extra_context = {"orders": Order.objects.all()}
+        return extra_context
