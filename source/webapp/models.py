@@ -16,10 +16,10 @@ class Dish(models.Model):
 
 
 class Order(models.Model):
-    dish_in_order = models.ForeignKey('webapp.Dish', on_delete=models.PROTECT, verbose_name='Dish in order',
-                                      related_name='orders')  # немного не понял что с ней делать
+    dish = models.ManyToManyField('webapp.Dish', verbose_name='Dish in order',
+                                  related_name='orders')
     completed_order = BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.dish_in_order} (Completed Order: {self.completed_order})"
+        return f"Order #{self.pk} (Completed Order: {self.completed_order})"
