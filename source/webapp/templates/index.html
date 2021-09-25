@@ -12,11 +12,13 @@
         {% if number_of_dishes == 0 %}
             <p>Order is empty, please add some dishes</p>
         {% else %}
-            {% for order in orders %}
-                <p>{{ order.dish_in_order.title }}</p>
+            {% for dish_count in dishes_count %}
+                <p>{{ dish_count.dish_in_order__title }} x {{ dish_count.count }}
+                    {{ dish_count.dish_in_order__price }}$ <i class="fas fa-times"></i></p>
             {% endfor %}
-        {% endif %}
+      {% endif %}
       <hr>
+      <p>Total Price: {{ total_price }}</p>
       </div>
   </div>
   <div class="dishes">
