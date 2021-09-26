@@ -18,7 +18,8 @@ class Index(View):
         order_creating = Order.objects.create()
         dish_id = Dish.objects.filter(title=request.POST["dish__title"]).values("id").first()
         order_creating.dish.set(f"{dish_id['id']}")
-        orders = Order.objects.filter(id=order_creating.id).values("dish__title")
+        orders = Order.objects.filter(id=order_creating.id).values("dish__title", "dish__price").annotate(
+            count=Count("dish__title"))
         return render(request, self.template_name, {'dishes': dishes, 'order_id': order_creating.id, "orders": orders})
 
 
