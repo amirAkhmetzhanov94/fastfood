@@ -7,7 +7,7 @@
     <div class="card mb-5">
       <div class="card-body">
         <h3 class="card-title"> {{ dish.title }} {{dish.price}}$ </h3>
-        <a href="#" class="btn btn btn-danger" style="float: right">Remove</a>
+        <a href="{% url 'delete' dish.pk %}" class="btn btn btn-danger" style="float: right">Remove</a>
         <a href="#" class="btn btn btn-info" style="float: right">Edit</a>
       </div>
     </div>

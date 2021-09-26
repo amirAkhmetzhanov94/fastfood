@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView
 from webapp.models import Dish, Order
+from django.urls import reverse 
 from django.db.models import Q
 from django.db.models import Count
 
@@ -53,5 +54,20 @@ class DishesView(TemplateView):
     template_name = 'dishes_list.html'
 
     def get_context_data(self, **kwargs):
-        context = {'dishes': Dish.objects.all()}
-        return context
+        extra_context = {'dishes': Dish.objects.all()}
+        return extra_context
+
+
+class AddDishView(TemplateView):
+    pass
+
+
+class DishDeleteView(TemplateView):
+    template_name = 'dish_delete.html'
+
+    def get_object(self):
+        id_ = self.kwargs.get('id')
+        return get_object_or_404(Dish, id=id_)
+
+    def get_success_url(self):
+        return reverse('webapp:dishes')
