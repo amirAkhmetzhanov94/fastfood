@@ -14,6 +14,10 @@ class Dish(models.Model):
     def __str__(self):
         return f'{self.title} ({self.category})'
 
+    class Meta:
+        verbose_name_plural = "dishes"
+        verbose_name = "dish"
+
 
 class Order(models.Model):
     dish = models.ManyToManyField('webapp.Dish', verbose_name='Dish in order',
