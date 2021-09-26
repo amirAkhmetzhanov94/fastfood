@@ -9,16 +9,16 @@
       <h2 class="orders_title">Order details</h2>
     </div>
       <div class="order_list">
-        {% if number_of_dishes == 0 %}
+        {% if not orders %}
             <p>Order is empty, please add some dishes</p>
         {% else %}
-            {% for dish_count in dishes_count %}
-                <p>{{ dish_count.dish_in_order__title }} x {{ dish_count.count }}
-                    {{ dish_count.dish_in_order__price }}$ <i class="fas fa-times"></i></p>
-            {% endfor %}
-      {% endif %}
-      <hr>
-      <p>Total Price: {{ total_price }}</p>
+          <p>There's an order</p>
+                  <hr>
+          <p>Total Price: {{ total_price }}</p>
+{#            {% for dish_count in dishes_count %}#}
+{#                <p>{{ dish_count.dish_in_order__title }} x {{ dish_count.count }}#}
+{#                    {{ dish_count.dish_in_order__price }}$ <i class="fas fa-times"></i></p>#}
+        {% endif %}
       </div>
   </div>
   <div class="dishes">
@@ -35,6 +35,10 @@
                 <p>{{ dish.title }}</p><hr>
               </div>
           <p>Price: {{ dish.price }} $</p>
+        <form action="/" method="post">
+            {% csrf_token %}
+          <button class="btn btn-secondary" name="dish__title" value="{{ dish.title }}">Add to cart</button>
+        </form>
     </div>
     {% endfor %}
   </div>
