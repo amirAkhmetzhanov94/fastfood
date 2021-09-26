@@ -6,127 +6,150 @@
     "title": "Hamburger",
     "category": "food",
     "price": "5.00",
-    "activated": false
+    "activated": true
   }
 },
 {
   "model": "webapp.dish",
   "pk": 2,
   "fields": {
-    "title": "Cheeseburger",
+    "title": "Black tea",
     "category": "food",
-    "price": "3.00",
-    "activated": false
+    "price": "2.00",
+    "activated": true
   }
 },
 {
   "model": "webapp.dish",
   "pk": 3,
   "fields": {
-    "title": "PIzza",
+    "title": "Cheesburger",
     "category": "food",
-    "price": "4.00",
-    "activated": false
+    "price": "5.00",
+    "activated": true
   }
 },
 {
   "model": "webapp.dish",
   "pk": 4,
   "fields": {
-    "title": "Cola",
+    "title": "Coca-cola",
     "category": "drink",
-    "price": "1.00",
-    "activated": false
+    "price": "2.00",
+    "activated": true
   }
 },
 {
   "model": "webapp.dish",
   "pk": 5,
   "fields": {
-    "title": "Pepsi",
-    "category": "drink",
-    "price": "1.00",
-    "activated": false
+    "title": "Pizza",
+    "category": "food",
+    "price": "8.00",
+    "activated": true
   }
 },
 {
   "model": "webapp.dish",
   "pk": 6,
   "fields": {
-    "title": "Sprite",
+    "title": "Fuse Tea",
     "category": "drink",
-    "price": "1.00",
-    "activated": false
+    "price": "3.00",
+    "activated": true
   }
 },
 {
   "model": "webapp.order",
   "pk": 1,
   "fields": {
-    "dish_in_order": 1,
     "completed_order": false,
-    "created_at": "2021-09-24T06:32:19.076Z"
+    "created_at": "2021-09-26T07:53:37.886Z",
+    "dish": [
+      3
+    ]
   }
 },
 {
   "model": "webapp.order",
   "pk": 2,
   "fields": {
-    "dish_in_order": 2,
     "completed_order": false,
-    "created_at": "2021-09-24T06:50:18.723Z"
+    "created_at": "2021-09-26T07:53:39.095Z",
+    "dish": [
+      1
+    ]
   }
 },
 {
   "model": "webapp.order",
   "pk": 3,
   "fields": {
-    "dish_in_order": 3,
     "completed_order": false,
-    "created_at": "2021-09-24T06:50:24.221Z"
+    "created_at": "2021-09-26T07:53:40.062Z",
+    "dish": [
+      2
+    ]
   }
 },
 {
   "model": "webapp.order",
   "pk": 4,
   "fields": {
-    "dish_in_order": 4,
     "completed_order": false,
-    "created_at": "2021-09-24T06:50:30.999Z"
+    "created_at": "2021-09-26T07:53:42.077Z",
+    "dish": [
+      1
+    ]
   }
 },
 {
   "model": "webapp.order",
   "pk": 5,
   "fields": {
-    "dish_in_order": 5,
     "completed_order": false,
-    "created_at": "2021-09-24T06:50:37.893Z"
+    "created_at": "2021-09-26T07:53:42.609Z",
+    "dish": [
+      1
+    ]
   }
 },
 {
   "model": "webapp.order",
   "pk": 6,
   "fields": {
-    "dish_in_order": 6,
     "completed_order": false,
-    "created_at": "2021-09-24T06:51:21.431Z"
+    "created_at": "2021-09-26T07:53:42.768Z",
+    "dish": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 7,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-26T08:06:59.490Z",
+    "dish": [
+      2
+    ]
   }
 },
 {
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$260000$qyTyP6xDCQ7ODlEVyXKPqo$Oo95Gq89X092MHGTrjkeQ73jaxFMpX0t/Uwf2+LTugE=",
-    "last_login": "2021-09-24T06:18:21.167Z",
+    "password": "pbkdf2_sha256$260000$fMxjsDIMd9FBnpcF1eeBFf$n5xLfL9rFgl4Az5qvkpAh/nOddeyUKwpOU+Bvo2BOKo=",
+    "last_login": "2021-09-26T07:47:11.323Z",
     "is_superuser": true,
-    "username": "admin",
+    "username": "Boris",
     "first_name": "",
     "last_name": "",
-    "email": "admin@admin.ru",
+    "email": "kimiko9090@mail.ru",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2021-09-24T06:16:50.268Z",
+    "date_joined": "2021-09-26T07:46:57.597Z",
     "groups": [],
     "user_permissions": []
   }
