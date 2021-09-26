@@ -20,5 +20,6 @@ from webapp import views as webapp_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', webapp_views.Index.as_view()),
-    path('orders/', webapp_views.OrdersView.as_view())
+    path('orders/', webapp_views.OrdersView.as_view()),
+    path('orders/<int:pk>/', webapp_views.OrderDetailView.as_view(), name='detail'),
 ]
