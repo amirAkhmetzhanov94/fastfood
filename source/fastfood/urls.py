@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', webapp_views.Index.as_view()),
     path('orders/', webapp_views.OrdersView.as_view()),
+    path('dishes/', webapp_views.DishesView.as_view(), name='dishes'),
     path('orders/<int:pk>/', webapp_views.OrderDetailView.as_view(), name='detail'),
 ]

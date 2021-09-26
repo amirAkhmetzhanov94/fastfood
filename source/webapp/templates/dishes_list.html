@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Dishes List {% endblock %}
+
+{% block content %}
+    {% for dish in dishes %}
+    <div class="card mb-5">
+      <div class="card-body">
+        <h3 class="card-title"> {{ dish.title }} {{dish.price}}$ </h3>
+        <a href="#" class="btn btn btn-danger" style="float: right">Remove</a>
+        <a href="#" class="btn btn btn-info" style="float: right">Edit</a>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

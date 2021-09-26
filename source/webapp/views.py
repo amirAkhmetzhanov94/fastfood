@@ -47,3 +47,11 @@ class OrderDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         kwargs['order'] = get_object_or_404(Order, pk=kwargs['pk'])
         return super().get_context_data(**kwargs)
+
+
+class DishesView(TemplateView):
+    template_name = 'dishes_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = {'dishes': Dish.objects.all()}
+        return context
