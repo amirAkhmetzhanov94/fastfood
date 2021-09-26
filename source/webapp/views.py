@@ -3,6 +3,7 @@ from django.views.generic import View, TemplateView
 from webapp.models import Dish, Order
 from django.db.models import Q
 from django.db.models import Count
+from django.db.models import F
 
 
 class Index(View):
@@ -31,7 +32,8 @@ class OrdersMainPage(View):
         dish = Dish.objects.get(title=request.POST["dish__title"])
         order.dish.add(dish)
         order.save()
-        orders = Order.objects.filter(id=order.id).values("dish__title")
+        orders = Order.objects.filter(id=order.id).values("dish__title", "dish__price").annotate(count=Count(
+            "dish__title"))
         return render(request, self.template_name, {'dishes': dishes, 'order_id': order_id, 'orders': orders})
         # order = Order.objects.filter(id=f"{kwargs['pk']}")
     # def get_context_data(self, **kwargs):
