@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, CreateView
 from webapp.models import Dish, Order
-from django.urls import reverse 
+from django.urls import reverse
+from .forms import DishForm
 from django.db.models import Q
 from django.db.models import Count
 
@@ -58,8 +59,14 @@ class DishesView(TemplateView):
         return extra_context
 
 
-class AddDishView(TemplateView):
-    pass
+class AddDishView(CreateView):
+    template_name = 'dish_add.html'
+    form_class = DishForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
 
 
 class DishDeleteView(TemplateView):

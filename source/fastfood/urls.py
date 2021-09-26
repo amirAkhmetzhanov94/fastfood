@@ -23,5 +23,6 @@ urlpatterns = [
     path('orders/', webapp_views.OrdersView.as_view()),
     path('dishes/', webapp_views.DishesView.as_view(), name='dishes'),
     path('orders/<int:pk>/', webapp_views.OrderDetailView.as_view(), name='detail'),
-    path('dishes/<int:pk>/delete', webapp_views.DishDeleteView.as_view(), name="delete")
+    path('dishes/<int:pk>/delete', webapp_views.DishDeleteView.as_view(), name="delete"),
+    path('dishes/new', webapp_views.AddDishView.as_view(), name='add')
 ]
