@@ -12,7 +12,9 @@
         {% if not orders %}
             <p>Order is empty, please add some dishes</p>
         {% else %}
-          <p>There's an order</p>
+          {% for order in orders %}
+            <p>{{ order.dish__title }}</p>
+          {% endfor %}
                   <hr>
           <p>Total Price: {{ total_price }}</p>
 {#            {% for dish_count in dishes_count %}#}
@@ -35,10 +37,17 @@
                 <p>{{ dish.title }}</p><hr>
               </div>
           <p>Price: {{ dish.price }} $</p>
+      {% if not orders %}
         <form action="/" method="post">
             {% csrf_token %}
           <button class="btn btn-secondary" name="dish__title" value="{{ dish.title }}">Add to cart</button>
         </form>
+      {% else %}
+       <form action="{% url 'orders_main_page' order_id %}" method="post">
+            {% csrf_token %}
+          <button class="btn btn-secondary" name="dish__title" value="{{ dish.title }}">Add to cart</button>
+        </form>
+      {% endif %}
     </div>
     {% endfor %}
   </div>

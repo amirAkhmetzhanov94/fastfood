@@ -14,10 +14,26 @@ class Index(View):
 
     def post(self, request, *args, **kwargs):
         dishes = Dish.objects.all()
-        order = Order.objects.create()
+        order_creating = Order.objects.create()
         dish_id = Dish.objects.filter(title=request.POST["dish__title"]).values("id").first()
-        order.dish.set(f"{dish_id['id']}")
-        return render(request, self.template_name, {'dishes': dishes})
+        order_creating.dish.set(f"{dish_id['id']}")
+        orders = Order.objects.filter(id=order_creating.id).values("dish__title")
+        return render(request, self.template_name, {'dishes': dishes, 'order_id': order_creating.id, "orders": orders})
+
+
+class OrdersMainPage(View):
+    template_name = "index.html"
+
+    def post(self, request, *args, **kwargs):
+        dishes = Dish.objects.all()
+        order_id = kwargs["pk"]
+        order = Order.objects.get(id=order_id)
+        dish = Dish.objects.get(title=request.POST["dish__title"])
+        order.dish.add(dish)
+        order.save()
+        orders = Order.objects.filter(id=order.id).values("dish__title")
+        return render(request, self.template_name, {'dishes': dishes, 'order_id': order_id, 'orders': orders})
+        # order = Order.objects.filter(id=f"{kwargs['pk']}")
     # def get_context_data(self, **kwargs):
     #     extra_context = {'dishes': Dish.objects.all(), 'number_of_dishes': 0}
     #     Order.objects.values("id")
