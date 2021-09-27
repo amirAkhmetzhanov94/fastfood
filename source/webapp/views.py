@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from webapp.models import Dish, Order
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from .forms import DishForm
 from django.db.models import Q
 from django.db.models import Count
