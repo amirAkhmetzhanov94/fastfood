@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import View, TemplateView, CreateView
+from django.views.generic import View, TemplateView, CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from webapp.models import Dish, Order
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .forms import DishForm
 from django.db.models import Q
 from django.db.models import Count
@@ -89,17 +89,10 @@ class AddDishView(CreateView):
         return super().form_valid(form)
 
 
-class DishDeleteView(TemplateView):
+class DishDeleteView(DeleteView):
+    model = Dish
     template_name = 'dish_delete.html'
-
-    def get_object(self):
-        id_ = self.kwargs.get('id')
-        return get_object_or_404(Dish, id=id_)
-
-    def get_success_url(self):
-        return reverse('webapp:dishes')
-        context = {'dishes': Dish.objects.all()}
-        return context
+    succes_url = reverse_lazy('dishes')
 
 
 class DishEditView(UpdateView):

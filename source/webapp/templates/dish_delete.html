@@ -6,7 +6,7 @@
 <form method='POST' action='/'>
     {% csrf_token %}
     <h3> Are you sure you want to delete "{{ dish.title }}" </h3>
-    <input type='submit' value='Delete'>
-    <a href="{% url 'dishes' %}"> Cancel </a>
+    <input type='submit' value='Delete' class='btn btn-danger btn-sm'>
+    <a href="{% url 'dishes' %}" class='btn btn-primary btn-sm'> Cancel </a>
 </form>
 {% endblock %}
