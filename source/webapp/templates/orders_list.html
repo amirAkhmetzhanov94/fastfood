@@ -6,7 +6,7 @@
     {% for order in orders %}
     <div class="card mb-5">
       <div class="card-body">
-        <h3 class="card-title">{{ order.dish_in_order.title }}</h3>
+        <h3 class="card-title">{{ order.dish__title }}</h3>
         <p class="card-text">Total Sum: 5.0 $</p>
         <a href="#" class="btn btn btn-success" style="float: right">Complete</a>
         <a href="{% url 'detail' order.pk %}" class="btn btn-primary mr-4" style="float: right">Details</a>

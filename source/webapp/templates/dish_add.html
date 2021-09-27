@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %} Create new dish {% endblock %}
+
+{% block content %}
+    <form action="{% url "add" %}" method='POST'>
+        {% include "partial/dish_form.html" with button_text="Add new dish" %}
+    </form>
+{% endblock %}

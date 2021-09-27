@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import BooleanField, DecimalField
+from django.urls import reverse
 
 CATEGORY_CHOICES = [('drink', 'Напиток'), ('food', 'Еда')]
 
@@ -13,6 +14,10 @@ class Dish(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.category})'
+
+    def get_absolute_url(self):
+        return reverse('dishes')
+    
 
     class Meta:
         verbose_name_plural = "dishes"

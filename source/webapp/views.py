@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, CreateView, DeleteView
+from django.views.generic.edit import UpdateView
 from webapp.models import Dish, Order
+from django.urls import reverse_lazy
+from .forms import DishForm
 from django.db.models import Q
 from django.db.models import Count
 from django.db.models import F
@@ -72,5 +75,27 @@ class DishesView(TemplateView):
     template_name = 'dishes_list.html'
 
     def get_context_data(self, **kwargs):
-        context = {'dishes': Dish.objects.all()}
-        return context
+        extra_context = {'dishes': Dish.objects.all()}
+        return extra_context
+
+
+class AddDishView(CreateView):
+    template_name = 'dish_add.html'
+    form_class = DishForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+
+class DishDeleteView(DeleteView):
+    model = Dish
+    template_name = 'dish_delete.html'
+    succes_url = reverse_lazy('dishes')
+
+
+class DishEditView(UpdateView):
+    model = Dish
+    template_name = 'dish_edit.html'
+    fields = '__all__'

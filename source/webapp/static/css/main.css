@@ -1,6 +1,7 @@
 body {
     font-family: arial, sans-serif;
 }
+
 .container {
     width: 1200px;
     margin: 0 auto;
@@ -56,6 +57,7 @@ i{
 div.dishes_food{
     background: darkorange;
 }
+
 div.dishes_drink{
     background: darkseagreen;
 }

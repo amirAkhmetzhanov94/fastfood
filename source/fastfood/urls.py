@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from webapp import views as webapp_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', webapp_views.Index.as_view()),
-    path('orders/', webapp_views.OrdersView.as_view()),
+    path('orders/', webapp_views.OrdersView.as_view(), name='orders'),
     path('dishes/', webapp_views.DishesView.as_view(), name='dishes'),
     path('orders/<int:pk>/', webapp_views.OrderDetailView.as_view(), name='detail'),
-    path('order/<int:pk>/', webapp_views.OrdersMainPage.as_view(), name="orders_main_page")
+    path('dishes/<int:pk>/delete', webapp_views.DishDeleteView.as_view(), name="delete"),
+    path('dishes/new', webapp_views.AddDishView.as_view(), name='add'),
+    path('order/<int:pk>/', webapp_views.OrdersMainPage.as_view(), name="orders_main_page"),
+    path('dishes/<int:pk>/edit', webapp_views.DishEditView.as_view(), name="edit")
 ]
