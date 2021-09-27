@@ -6,7 +6,10 @@
     {% for dish in dishes %}
     <div class="card mb-5">
       <div class="card-body">
-        <h3 class="card-title"> {{ dish.title }} {{dish.price}}$ </h3>
+        <h3 class="card-title"> {{ dish.title }} {{dish.price}}$</h3>
+        {% if dish.activated == False %}
+        <span style="color: red"> <b> Not visible </b> </span>
+        {% endif %}
         <a href="{% url 'delete' dish.pk %}" class="btn btn btn-danger" style="float: right">Remove</a>
         <a href="{% url 'edit' dish.pk %}" class="btn btn btn-info mr-4" style="float: right">Edit</a>
       </div>
