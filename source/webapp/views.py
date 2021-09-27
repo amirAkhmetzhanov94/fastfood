@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, CreateView
+from django.views.generic.edit import UpdateView
 from webapp.models import Dish, Order
 from django.urls import reverse
 from .forms import DishForm
@@ -99,3 +100,9 @@ class DishDeleteView(TemplateView):
         return reverse('webapp:dishes')
         context = {'dishes': Dish.objects.all()}
         return context
+
+
+class DishEditView(UpdateView):
+    model = Dish
+    template_name = 'dish_edit.html'
+    fields = '__all__'
