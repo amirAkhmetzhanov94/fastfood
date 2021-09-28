@@ -13,9 +13,12 @@
             <p>Order is empty, please add some dishes</p>
         {% else %}
           {% for dish in dish_orders %}
-            <span>{{ dish.dish_in_order__title }} x {{ dish.qty }} {{ dish.dish_in_order__price }}
-              <form action="{% url 'orders_main_page' order_id %}" method="post">{% csrf_token %}<button class="fas
-            fa-times" name="dish_delete" value="{{ dish.id }}"></button></form></span>
+            <div class="flex_mainpage">{{ dish.dish_in_order__title }} x {{ dish.qty }}
+              <form action="{% url 'orders_main_page' order_id %}" method="post">{% csrf_token %}
+                  <button class="main_page_button" name="dish_delete" value="{{ dish.id }}">{{ dish.dish_in_order__price }}<i class="fas
+            fa-times"></i></button>
+              </form>
+            </div>
           {% endfor %}
                   <hr>
           <p>Total Price: {% firstof total_price 0 %} $</p>

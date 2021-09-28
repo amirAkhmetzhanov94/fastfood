@@ -36,6 +36,11 @@ class OrdersMainPage(View):
             if dish_for_delete:
                 dish = OrderDish.objects.get(order_id=order_id, pk=request.POST['dish_delete'])
                 dish.delete()
+                orderdish = OrderDish.objects.filter(order_id=order_id)
+                if not len(orderdish):
+                    order = Order.objects.get(id=order_id)
+                    order.delete()
+                    return redirect('index')
                 dish_orders = order.order_dishes.all().values("dish_in_order__title", "dish_in_order__price", "qty",
                                                               "id")
                 return render(request, self.template_name, {'dishes': dishes, 'order_id': order_id, 'dish_orders':
@@ -59,21 +64,47 @@ class OrdersMainPage(View):
         return total
 
 
-
 class OrdersView(TemplateView):
     template_name = 'orders_list.html'
 
     def get_context_data(self, **kwargs):
-        extra_context = {"orders": Order.objects.all()}
+        dish_orders = OrderDish.objects.all().values("dish_in_order__title", "dish_in_order__price", "qty", "id")
+        extra_context = {"total_sum": self.get_total_sum(dish_orders), "orders": Order.objects.all()}
         return extra_context
 
+    def get_total_sum(self, orders):
+        total = 0
+        for o in orders:
+            # print(o['qty'])
+            # print(o['dish_in_order__price'])
+            total += o['qty'] * o['dish_in_order__price']
+        return total
 
-class OrderDetailView(TemplateView):
+
+class OrderDetailView(View):
     template_name = 'order_detail.html'
 
-    def get_context_data(self, **kwargs):
-        kwargs['order'] = get_object_or_404(Order, pk=kwargs['pk'])
-        return super().get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        dish_order = OrderDish.objects.filter(order_id=kwargs["pk"])
+        total_sum = 0
+        for dish in dish_order:
+            total_sum += dish.dish_in_order.price * dish.qty
+
+        return render(request, self.template_name, {"dish_order": dish_order, "order_id": kwargs["pk"], "total_sum":
+            total_sum})
+
+    def post(self, request, *args, **kwargs):
+        dish_order = OrderDish.objects.filter(order_id=kwargs["pk"])
+        total_sum = 0
+        for dish in dish_order:
+            total_sum += dish.dish_in_order.price * dish.qty
+        order = get_object_or_404(Order, pk=kwargs["pk"])
+        is_completed = request.POST.get("is_completed")
+        if is_completed:
+            order.completed_order = True
+            order.save()
+            return render(request, self.template_name, {"dish_order": dish_order, "order_id": kwargs["pk"], "total_sum":
+                total_sum, "completed_order": order.completed_order})
 
 
 class DishesView(TemplateView):

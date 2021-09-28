@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %} Order #{{ order.id}} {% endblock %}
+{% block title %} Order #{{ order_id }} {% endblock %}
 
 {% block content %}
     <div class="detail_check"> 
-        <h2> Order #{{order.id}} </h2>
-        <p> {{ order.dish__title }} 5.0$ </p>
+        <h2> Order # {{ order_id }} </h2>
+        {% for dish in dish_order %}
+        <p> {{ dish.dish_in_order.title }} x {{ dish.qty }} {{ dish.dish_in_order.price }} $ </p>
+        {% endfor %}
         <hr class="line-check">
-        <p> Total sum: 5.0$ </p>
+        <h5> Total sum: {{ total_sum }} $ </h5>
+        {{ completed_order }}
+        {% if completed_order %}
+        <form action="{% url 'detail' order_id %}" method="post">{% csrf_token %}<button name="is_completed"
+                                                    value="True" class="btn btn-success">to order</button></form>
+        {% else %}
+            <button class="btn btn-success" disabled>completed</button></form>
+        {% endif %}
     </div>
 {% endblock %}

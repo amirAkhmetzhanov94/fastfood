@@ -61,3 +61,14 @@ div.dishes_food{
 div.dishes_drink{
     background: darkseagreen;
 }
+
+button.main_page_button{
+    border: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+div.flex_mainpage{
+    display: flex;
+    justify-content: space-between;
+}
