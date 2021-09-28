@@ -1,12 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, CreateView, DeleteView
 from django.views.generic.edit import UpdateView
-from webapp.models import Dish, Order
+from webapp.models import Dish, Order, OrderDish
 from django.urls import reverse_lazy
 from .forms import DishForm
-from django.db.models import Q
-from django.db.models import Count
-from django.db.models import F
 
 
 class Index(View):
@@ -18,12 +15,12 @@ class Index(View):
 
     def post(self, request, *args, **kwargs):
         dishes = Dish.objects.all()
-        order_creating = Order.objects.create()
-        dish_id = Dish.objects.filter(title=request.POST["dish__title"]).values("id").first()
-        order_creating.dish.set(f"{dish_id['id']}")
-        orders = Order.objects.filter(id=order_creating.id).values("dish__title", "dish__price").annotate(
-            count=Count("dish__title"))
-        return render(request, self.template_name, {'dishes': dishes, 'order_id': order_creating.id, "orders": orders})
+        order = Order.objects.create()
+        dish_id = get_object_or_404(Dish, id=request.POST["dish_id"])
+        order.dishes.add(dish_id)
+        dish_orders = order.order_dishes.all().values("dish_in_order__title", "dish_in_order__price", "qty", "id")
+        return render(request, self.template_name, {'dishes': dishes, 'order_id': order.id, "dish_orders":
+            dish_orders, "total_price": dish_id.price})
 
 
 class OrdersMainPage(View):
@@ -33,26 +30,34 @@ class OrdersMainPage(View):
         dishes = Dish.objects.all()
         order_id = kwargs["pk"]
         order = Order.objects.get(id=order_id)
-        dish = Dish.objects.get(title=request.POST["dish__title"])
-        order.dish.add(dish)
-        order.save()
-        orders = Order.objects.filter(id=order.id).values("dish__title", "dish__price").annotate(count=Count(
-            "dish__title"))
-        return render(request, self.template_name, {'dishes': dishes, 'order_id': order_id, 'orders': orders})
-        # order = Order.objects.filter(id=f"{kwargs['pk']}")
-    # def get_context_data(self, **kwargs):
-    #     extra_context = {'dishes': Dish.objects.all(), 'number_of_dishes': 0}
-    #     Order.objects.values("id")
-    #     if Order.objects.all():
-    #         extra_context['number_of_dishes'] = Order.objects.count()
-    #         extra_context['orders'] = Order.objects.values("id")
-    #         # dishes_count = Order.objects.values('dish_in_order__title', 'dish_in_order__price').annotate(
-    #         #     count=Count('dish_in_order__title'))
-    #         extra_context['total_price'] = 0
-    #         # for total_price in dishes_count:
-    #         #     extra_context['total_price'] += (total_price["dish_in_order__price"] * total_price["count"])
-    #         # extra_context['dishes_count'] = dishes_count
-    #     return extra_context
+        dish = None
+        try:
+            dish_for_delete = request.POST.get("dish_delete")
+            if dish_for_delete:
+                dish = OrderDish.objects.get(order_id=order_id, pk=request.POST['dish_delete'])
+                dish.delete()
+                dish_orders = order.order_dishes.all().values("dish_in_order__title", "dish_in_order__price", "qty",
+                                                              "id")
+                return render(request, self.template_name, {'dishes': dishes, 'order_id': order_id, 'dish_orders':
+                    dish_orders, "total_price": self.get_total_sum(dish_orders)})
+
+            dish = OrderDish.objects.get(order_id=order_id, dish_in_order_id=request.POST["dish_id"])
+            dish.qty += 1
+            dish.save()
+        except Exception as e:
+            print(e)
+            dish = Dish.objects.get(id=request.POST["dish_id"])
+            order.dishes.add(dish)
+        dish_orders = order.order_dishes.all().values("dish_in_order__title", "dish_in_order__price", "qty", "id")
+        return render(request, self.template_name, {'dishes': dishes, 'order_id': order_id, 'dish_orders':
+            dish_orders, "total_price": self.get_total_sum(dish_orders)})
+
+    def get_total_sum(self, orders):
+        total = 0
+        for o in orders:
+            total += o['qty'] * o['dish_in_order__price']
+        return total
+
 
 
 class OrdersView(TemplateView):
