@@ -6,150 +6,266 @@
     "title": "Hamburger",
     "category": "food",
     "price": "5.00",
-    "activated": true
+    "activated": false
   }
 },
 {
   "model": "webapp.dish",
   "pk": 2,
   "fields": {
-    "title": "Black tea",
+    "title": "Cheeseburger",
     "category": "food",
-    "price": "2.00",
-    "activated": true
-  }
-},
-{
-  "model": "webapp.dish",
-  "pk": 3,
-  "fields": {
-    "title": "Cheesburger",
-    "category": "food",
-    "price": "5.00",
-    "activated": true
-  }
-},
-{
-  "model": "webapp.dish",
-  "pk": 4,
-  "fields": {
-    "title": "Coca-cola",
-    "category": "drink",
-    "price": "2.00",
-    "activated": true
-  }
-},
-{
-  "model": "webapp.dish",
-  "pk": 5,
-  "fields": {
-    "title": "Pizza",
-    "category": "food",
-    "price": "8.00",
-    "activated": true
-  }
-},
-{
-  "model": "webapp.dish",
-  "pk": 6,
-  "fields": {
-    "title": "Fuse Tea",
-    "category": "drink",
     "price": "3.00",
-    "activated": true
+    "activated": false
   }
 },
 {
-  "model": "webapp.order",
-  "pk": 1,
-  "fields": {
-    "completed_order": false,
-    "created_at": "2021-09-26T07:53:37.886Z",
-    "dish": [
-      3
-    ]
-  }
-},
-{
-  "model": "webapp.order",
-  "pk": 2,
-  "fields": {
-    "completed_order": false,
-    "created_at": "2021-09-26T07:53:39.095Z",
-    "dish": [
-      1
-    ]
-  }
-},
-{
-  "model": "webapp.order",
+  "model": "webapp.dish",
   "pk": 3,
   "fields": {
-    "completed_order": false,
-    "created_at": "2021-09-26T07:53:40.062Z",
-    "dish": [
-      2
-    ]
+    "title": "PIzza",
+    "category": "food",
+    "price": "4.00",
+    "activated": false
   }
 },
 {
-  "model": "webapp.order",
+  "model": "webapp.dish",
   "pk": 4,
   "fields": {
-    "completed_order": false,
-    "created_at": "2021-09-26T07:53:42.077Z",
-    "dish": [
-      1
-    ]
+    "title": "Cola",
+    "category": "drink",
+    "price": "1.00",
+    "activated": false
   }
 },
 {
-  "model": "webapp.order",
+  "model": "webapp.dish",
   "pk": 5,
   "fields": {
-    "completed_order": false,
-    "created_at": "2021-09-26T07:53:42.609Z",
-    "dish": [
-      1
-    ]
+    "title": "Pepsi",
+    "category": "drink",
+    "price": "1.00",
+    "activated": false
   }
 },
 {
-  "model": "webapp.order",
+  "model": "webapp.dish",
   "pk": 6,
   "fields": {
-    "completed_order": false,
-    "created_at": "2021-09-26T07:53:42.768Z",
-    "dish": [
-      1
-    ]
+    "title": "Sprite",
+    "category": "drink",
+    "price": "1.00",
+    "activated": false
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 49,
+  "fields": {
+    "order": 205,
+    "dish_in_order": 1,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 50,
+  "fields": {
+    "order": 206,
+    "dish_in_order": 2,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 51,
+  "fields": {
+    "order": 210,
+    "dish_in_order": 2,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 52,
+  "fields": {
+    "order": 211,
+    "dish_in_order": 1,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 53,
+  "fields": {
+    "order": 212,
+    "dish_in_order": 1,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 54,
+  "fields": {
+    "order": 213,
+    "dish_in_order": 1,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 55,
+  "fields": {
+    "order": 214,
+    "dish_in_order": 3,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 56,
+  "fields": {
+    "order": 215,
+    "dish_in_order": 1,
+    "qty": 1
+  }
+},
+{
+  "model": "webapp.orderdish",
+  "pk": 220,
+  "fields": {
+    "order": 315,
+    "dish_in_order": 1,
+    "qty": 5
   }
 },
 {
   "model": "webapp.order",
-  "pk": 7,
+  "pk": 203,
   "fields": {
     "completed_order": false,
-    "created_at": "2021-09-26T08:06:59.490Z",
-    "dish": [
-      2
-    ]
+    "created_at": "2021-09-27T10:23:33.821Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 204,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:23:40.036Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 205,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:28:42.773Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 206,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:28:44.073Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 207,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:29:46.777Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 208,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:30:21.625Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 209,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:31:22.685Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 210,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:31:49.319Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 211,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:31:50.871Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 212,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:32:26.212Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 213,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:32:29.847Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 214,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:32:31.038Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 215,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-27T10:55:32.249Z"
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 315,
+  "fields": {
+    "completed_order": false,
+    "created_at": "2021-09-28T03:30:02.187Z"
   }
 },
 {
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$260000$fMxjsDIMd9FBnpcF1eeBFf$n5xLfL9rFgl4Az5qvkpAh/nOddeyUKwpOU+Bvo2BOKo=",
-    "last_login": "2021-09-26T07:47:11.323Z",
+    "password": "pbkdf2_sha256$260000$qyTyP6xDCQ7ODlEVyXKPqo$Oo95Gq89X092MHGTrjkeQ73jaxFMpX0t/Uwf2+LTugE=",
+    "last_login": "2021-09-27T11:18:51.253Z",
     "is_superuser": true,
-    "username": "Boris",
+    "username": "admin",
     "first_name": "",
     "last_name": "",
-    "email": "kimiko9090@mail.ru",
+    "email": "admin@admin.ru",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2021-09-26T07:46:57.597Z",
+    "date_joined": "2021-09-24T06:16:50.268Z",
     "groups": [],
     "user_permissions": []
   }
