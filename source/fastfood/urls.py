@@ -27,5 +27,6 @@ urlpatterns = [
     path('dishes/<int:pk>/delete', webapp_views.DishDeleteView.as_view(), name="delete"),
     path('dishes/new', webapp_views.AddDishView.as_view(), name='add'),
     path('order/<int:pk>/', webapp_views.OrdersMainPage.as_view(), name="orders_main_page"),
-    path('dishes/<int:pk>/edit', webapp_views.DishEditView.as_view(), name="edit")
+    path('dishes/<int:pk>/edit', webapp_views.DishEditView.as_view(), name="edit"),
+    path('complete_gateway/<int:pk>', webapp_views.CompleteGateway.as_view(), name="complete_gateway")
 ]

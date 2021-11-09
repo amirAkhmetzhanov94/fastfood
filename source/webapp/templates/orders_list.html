@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Orders List{% endblock %}
 
 {% block content %}
@@ -8,7 +8,14 @@
       <div class="card-body">
         <h3 class="card-title">Order #{{ order.id }}</h3>
         <p class="card-text">Total sum: {{ total_sum.pop }}</p>
-        <a href="#" class="btn btn btn-success" style="float: right">Complete</a>
+          {% ifequal order.completed_order 0 %}
+          <form class="text-left" action="{% url "complete_gateway" order.pk %}" method="post">
+                {% csrf_token %}
+                <button class="complete_button btn btn-success" name="isComplete" value="True">Complete</button>
+          </form>
+          {% else %}
+          <button class="complete_button btn btn-secondary" disabled>Completed</button>
+          {% endifequal %}
         <a href="{% url 'detail' order.pk %}" class="btn btn-primary mr-4" style="float: right">Details</a>
       </div>
     </div>

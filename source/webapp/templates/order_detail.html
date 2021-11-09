@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %} Order #{{ order_id }} {% endblock %}
+{% block title %} Order #{{ order.id }} {% endblock %}
 
 {% block content %}
     <div class="detail_check"> 
-        <h2> Order # {{ order_id }} </h2>
-        {% for dish in dish_order %}
+        <h2> Order # {{ order.id }} </h2>
+        {% for dish in order.order_dishes.all %}
         <p> {{ dish.dish_in_order.title }} x {{ dish.qty }} {{ dish.dish_in_order.price }} $ </p>
         {% endfor %}
         <hr class="line-check">
         <h5> Total sum: {{ total_sum }} $ </h5>
-        {{ completed_order }}
-        {% if completed_order %}
-        <form action="{% url 'detail' order_id %}" method="post">{% csrf_token %}<button name="is_completed"
-                                                    value="True" class="btn btn-success">to order</button></form>
-        {% else %}
-            <button class="btn btn-success" disabled>completed</button></form>
-        {% endif %}
+          {% ifequal order.completed_order 0 %}
+          <form class="text-left" action="{% url "complete_gateway" order.pk %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-success" name="isComplete" value="True">Complete</button>
+          </form>
+          {% else %}
+          <button class="btn btn-secondary" disabled>Completed</button>
+          {% endifequal %}
     </div>
 {% endblock %}

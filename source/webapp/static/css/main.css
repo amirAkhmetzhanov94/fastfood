@@ -72,3 +72,7 @@ div.flex_mainpage{
     display: flex;
     justify-content: space-between;
 }
+
+button.complete_button{
+    float: right;
+}
