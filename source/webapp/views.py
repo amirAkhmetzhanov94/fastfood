@@ -1,3 +1,4 @@
+from django.db.models import F, Count
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, TemplateView, CreateView, DeleteView
 from django.views.generic.edit import UpdateView
@@ -68,17 +69,19 @@ class OrdersView(TemplateView):
     template_name = 'orders_list.html'
 
     def get_context_data(self, **kwargs):
-        dish_orders = OrderDish.objects.all().values("dish_in_order__title", "dish_in_order__price", "qty", "id")
-        extra_context = {"total_sum": self.get_total_sum(dish_orders), "orders": Order.objects.all()}
+        dish_orders = OrderDish.objects.all().values("dish_in_order__title", "dish_in_order__price", "qty", "order_id")
+        orders = Order.objects.all()
+        extra_context = {"total_sum": self.get_total_sum(orders), "orders": Order.objects.all().order_by("-id")}
         return extra_context
 
     def get_total_sum(self, orders):
-        total = 0
-        for o in orders:
-            # print(o['qty'])
-            # print(o['dish_in_order__price'])
-            total += o['qty'] * o['dish_in_order__price']
-        return total
+        sum_list = []
+        for order in orders:
+            total_sum = 0
+            for dish in OrderDish.objects.filter(order_id=order.pk):
+                total_sum += dish.dish_in_order.price * dish.qty
+            sum_list.append(total_sum)
+        return sum_list
 
 
 class OrderDetailView(View):
@@ -121,7 +124,6 @@ class AddDishView(CreateView):
     success_url = '/'
 
     def form_valid(self, form):
-        print(form.cleaned_data)
         return super().form_valid(form)
 
 
