@@ -15,17 +15,17 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-    <div class='container'>
+    <div class="container">
         <a class="navbar-brand" href="/">Fast Food</a>
-    </div>
-    <div class="dropdown container">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menu-Admin
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="{% url 'orders' %}">Orders</a>
-            <a class="dropdown-item" href="{% url 'dishes' %}">Dishes</a>
-            <a class="dropdown-item" href="{% url 'add' %}">Add dish</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu-Admin
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'orders' %}">Orders</a>
+                <a class="dropdown-item" href="{% url 'dishes' %}">Dishes</a>
+                <a class="dropdown-item" href="{% url 'add' %}">Add dish</a>
+            </div>
         </div>
     </div>
 </nav>
