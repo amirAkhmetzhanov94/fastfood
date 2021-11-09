@@ -1,13 +1,5 @@
+{% load crispy_forms_filters %}
 {% csrf_token %}
-{% for error in form.non_field_errors %}
-    <p> {{error}} </p>
-{% endfor %}
 
-{% for field in form %}
-    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-    {% for error in field.errors %}
-        <p> {{error}} </p>
-    {% endfor %}
-    <p> {{field}} </p>
-{% endfor %}
-<button>{{ button_text }}</button>
+{{ form|crispy }}
+<button class="btn btn-primary">{{ button_text }}</button>

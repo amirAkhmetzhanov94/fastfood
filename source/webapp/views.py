@@ -110,8 +110,8 @@ class OrderDetailView(View):
         total_sum = 0
         for dish in self.order_obj.order_dishes.all():
             total_sum += dish.dish_in_order.price * dish.qty
-        return render(request, self.template_name, {"order": self.order_obj, "total_sum":
-            total_sum})
+        return render(request, self.template_name, {"order": self.order_obj,
+                                                    "total_sum": total_sum})
 
 
 class DishesView(TemplateView):

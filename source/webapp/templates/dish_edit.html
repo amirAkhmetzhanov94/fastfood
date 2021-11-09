@@ -3,6 +3,6 @@
 {% block content %}
     <h1>Edit</h1>
     <form action="{% url "edit" dish.pk %}" method="POST"> 
-        {% include "partial/dish_form.html" with button_text="Edit dish"%}
+        {% include "partial/dish_form.html" with button_text="Edit dish" %}
     </form>
 {% endblock content %}
