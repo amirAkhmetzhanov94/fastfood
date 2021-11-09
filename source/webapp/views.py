@@ -10,11 +10,11 @@ class Index(View):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
-        dishes = Dish.objects.all()
+        dishes = Dish.objects.filter(activated=True)
         return render(request, self.template_name, {"dishes": dishes})
 
     def post(self, request, *args, **kwargs):
-        dishes = Dish.objects.all()
+        dishes = Dish.objects.filter(activated=True)
         order = Order.objects.create()
         dish_id = get_object_or_404(Dish, id=request.POST["dish_id"])
         order.dishes.add(dish_id)
@@ -27,7 +27,7 @@ class OrdersMainPage(View):
     template_name = "index.html"
 
     def post(self, request, *args, **kwargs):
-        dishes = Dish.objects.all()
+        dishes = Dish.objects.filter(activated=True)
         order_id = kwargs["pk"]
         order = Order.objects.get(id=order_id)
         dish = None

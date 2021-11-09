@@ -31,6 +31,10 @@ div.dishes{
     width: 100%;
 }
 
+div.no_dishes{
+    margin-top: 50px;
+}
+
 h2.orders_title, h2.dishes_title{
     padding-top: 30px;
 }
